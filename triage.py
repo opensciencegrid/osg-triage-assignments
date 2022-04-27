@@ -347,7 +347,7 @@ def list_triage_assignments(service, calId, minStart=None, maxStart=None):
 
     print("Triage:")
     for x in triage:
-        print(("%s: %s" % (x['start'], x['summary'])).encode('utf-8'))
+        print(("%s: %s" % (x['start'], x['summary'])))
 
 if __name__ == '__main__':
   main(sys.argv)
