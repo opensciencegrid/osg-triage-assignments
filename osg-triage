@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+
+d="$(dirname "$0")"
+
+if [[ ! -d venv ]]; then
+  echo "please run ./setup.sh to set up python virtualenv" >&2
+  exit 1
+fi
+
+. "$d"/venv/bin/activate
+
+"$d"/triage.py "$@"
