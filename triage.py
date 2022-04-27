@@ -218,7 +218,7 @@ def generate_triage_assignments(names, minDate, maxDate):
     for name in itertools.cycle(names):
         if date > end:
             break
-        print "%s: %s" % (d2s(date), name)
+        print("%s: %s" % (d2s(date), name))
         date += one_week
 
 
@@ -247,7 +247,7 @@ def add_triage_assignment(service, calId, name, start, end):
     ret = ins.execute()
     #for x in ['summary','start','end','htmlLink']:
     for x in ['htmlLink']:
-        print "%s: %s" % (x,ret[x])
+        print("%s: %s" % (x,ret[x]))
 
 def add_triage_assignment_1w(service, calId, name, start):
     start_dt = s2d(start)
@@ -256,7 +256,7 @@ def add_triage_assignment_1w(service, calId, name, start):
     else:
         td = datetime.timedelta(5)  # Mon-Fri
         end = d2s(start_dt + td)
-        print "adding assignment: %s: %s" % (start,name)
+        print("adding assignment: %s: %s" % (start,name))
         add_triage_assignment(service, calId, name, start, end)
 
 def warn(msg):
@@ -290,10 +290,10 @@ def delete_triage_assignment(service, calId, date):
 def delete_triage_assignments(service, calId, minStart, maxStart):
     triage = get_triage_assignments(service, calId, minStart, maxStart)
     l = len(triage)
-    print "Found %d event%s to delete in time window." % (l, "s" * (l != 1))
+    print("Found %d event%s to delete in time window." % (l, "s" * (l != 1)))
 
     for item in triage:
-        print "Deleting assignment: %s: %s" % (item['start'], item['summary'])
+        print("Deleting assignment: %s: %s" % (item['start'], item['summary']))
         delete_event(service, calId, item)
 
 def get_triage_assignments(service, calId, minStart=None, maxStart=None):
@@ -345,9 +345,9 @@ def get_triage_assignments(service, calId, minStart=None, maxStart=None):
 def list_triage_assignments(service, calId, minStart=None, maxStart=None):
     triage = get_triage_assignments(service, calId, minStart, maxStart)
 
-    print "Triage:"
+    print("Triage:")
     for x in triage:
-        print ("%s: %s" % (x['start'], x['summary'])).encode('utf-8')
+        print(("%s: %s" % (x['start'], x['summary'])).encode('utf-8'))
 
 if __name__ == '__main__':
   main(sys.argv)
