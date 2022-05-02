@@ -1,35 +1,35 @@
 OSG-Software Google Calendar Triage assignment tool
 
+First-time Setup:
+  $ ./setup.sh    # set up venv and authenticate via web browser
+
 Usage:
-  $ ./triage.py [ACTION] [OPTIONS]
-  $ ./triage.py --help
+  $ ./osg-triage [ACTION] [OPTIONS]
+  $ ./osg-triage --help
 
   Where ACTION can be one of: list, assign, delete, load, generate,
   generateFrom, generateRotation, or generateNextRotation. 
 
   An ACTION may also be specified with a leading "--" (eg, --list)
 
-First-time Use:
-  $ ./triage.py  # authenticate via web browser
-
 Typical Use:
-  $ ./triage.py list | tail
-  $ ./triage.py generateNextRotation > list.txt
-  $ ./triage.py load list.txt
+  $ ./osg-triage list | tail
+  $ ./osg-triage generateNextRotation > list.txt
+  $ ./osg-triage load list.txt
 
 Other Examples:
-  $ ./triage.py list --calendarId primary  # use personal google calendar
-  $ ./triage.py list --minDate 2014-03-01 --maxDate 2014-04-20
-  $ ./triage.py assign 2014-07-28 "James Kirk"
-  $ ./triage.py delete 2014-07-28
-  $ ./triage.py delete ALL --minDate 2014-07-01 --maxDate 2014-08-01
-  $ ./triage.py generateNextRotation | ./triage load -
+  $ ./osg-triage list --calendarId primary  # use personal google calendar
+  $ ./osg-triage list --minDate 2014-03-01 --maxDate 2014-04-20
+  $ ./osg-triage assign 2014-07-28 "James Kirk"
+  $ ./osg-triage delete 2014-07-28
+  $ ./osg-triage delete ALL --minDate 2014-07-01 --maxDate 2014-08-01
+  $ ./osg-triage generateNextRotation | ./osg-triage load -
 
 ---
 
 Notes:
 
-The first time you run ./triage.py, the script will have to authenticate with
+The first time you run ./setup.sh, the script will have to authenticate with
 google -- it will try to open a browser for this, otherwise you can use the
 link it prints out manually.  Once this is done, a file named "calendar.dat"
 will be written, containing authentication data.  After this, you should be
