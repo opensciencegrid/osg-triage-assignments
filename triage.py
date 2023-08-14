@@ -212,7 +212,7 @@ def generate_triage_assignments(names, minDate, maxDate):
     one_day  = datetime.timedelta(1)
     one_week = datetime.timedelta(7)
 
-    while date.isoweekday() != 1:
+    while date.isoweekday() != 2:
         date += one_day
 
     for name in itertools.cycle(names):
@@ -251,10 +251,10 @@ def add_triage_assignment(service, calId, name, start, end):
 
 def add_triage_assignment_1w(service, calId, name, start):
     start_dt = s2d(start)
-    if start_dt.isoweekday() != 1:
-        warn("%s is not a Monday, skipping..." % start)
+    if start_dt.isoweekday() != 2:
+        warn("%s is not a Tuesday, skipping..." % start)
     else:
-        td = datetime.timedelta(5)  # Mon-Fri
+        td = datetime.timedelta(7)  # Tue-Mon
         end = d2s(start_dt + td)
         print("adding assignment: %s: %s" % (start,name))
         add_triage_assignment(service, calId, name, start, end)
